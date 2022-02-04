@@ -1,0 +1,30 @@
+version: "3.7"
+
+volumes:
+  mongo-data:
+  mongo-config:
+
+services:
+
+  mongodb:
+    image: docker.io/amd64/mongo:4-bionic
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+
+  cyclotron-svc:
+    image: registry.gitlab.com/opencontent/cyclotron/svc
+    build: ./cyclotron-svc
+    ports:
+      - 8077:8077
+    environment:
+      WAIT_HOSTS: mongodb:27017
+
+  cyclotron-site:
+    image: registry.gitlab.com/opencontent/cyclotron/site
+    build: ./cyclotron-site
+    ports:
+      - 8087:8087
+
+# vim: autoindent tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=yaml fileencoding=utf-8
