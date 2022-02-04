@@ -1,10 +1,10 @@
 #!/bin/sh
 set -e
 
-export REST_SERVICE_URL="http://cyclotron-svc:8077"
-export EXTERNAL_SERVICE_URL="http://localhost:8077"
-export GRAPHITE_URL="http://sampleGraphiteHost:80"
-export SPLUNK_HOST="splunk"
+export REST_SERVICE_URL=${REST_SERVICE_URL:-"http://cyclotron-svc:8077"}
+export EXTERNAL_SERVICE_URL=${EXTERNAL_SERVICE_URL:-"http://localhost:8077"}
+export GRAPHITE_URL=${GRAPHITE_URL:-"http://sampleGraphiteHost:80"}
+export SPLUNK_HOST=${SPLUNK_HOST:-"splunk"}
 
 echo "Writing configuration file from environment variables"
 
