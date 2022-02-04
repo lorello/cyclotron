@@ -21,7 +21,8 @@ docker-build-svc:
   rules:
   - if: "$CI_COMMIT_BRANCH"
     exists:
-    - Dcyclotron-svc/ockerfile
+    - cyclotron-svc/Dockerfile
+
 docker-build-site:
   image: docker:latest
   stage: build
@@ -44,5 +45,5 @@ docker-build-site:
   rules:
   - if: "$CI_COMMIT_BRANCH"
     exists:
-    - Dcyclotron-svc/ockerfile
+    - cyclotron-svc/Dockerfile
 
